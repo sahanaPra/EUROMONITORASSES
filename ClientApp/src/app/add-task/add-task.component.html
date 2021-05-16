@@ -1,0 +1,41 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Add task to staff member
+  </div>
+  <div class="card-body">
+    <h1 id="tableLabel">Staff Details</h1>
+    <div>
+      <div class="form-label-div">
+        <!-- move styles to .scss file -->
+        <span style="font-size: large; font-weight: bold;" class="form-label" for="Name">Staff Name :</span>
+        <span class="form-label" for="Name">{{staffDetails.staffName}}</span>
+      </div>
+
+      <div class="form-label-div">
+        <span style="font-size: large; font-weight: bold;" class="form-label" for="hours">Available hours :</span>
+        <span class="form-label" for="hours">{{staffDetails.availableHours}}</span>
+      </div>
+
+      <span style="font-size: large; font-weight: bold;" class="form-label" for="hours">Assign the task : </span>
+      <span>
+        <select aria-placeholder="Select task" [(ngModel)]="selectedTask" name="select">
+          <option style="display:none">Select Task</option>
+          <option *ngFor="let data of tasks" [ngValue]="data">
+            {{data.taskName}}
+          </option>
+        </select>
+      </span>
+
+    </div>
+
+    <br>
+    <br>
+    <a href="#" (click)="linkTask()" class="btn btn-success">Link Task</a>
+    <a href="#"  (click)="close()" class="btn btn-danger">Cancel</a>
+  </div>
+</div>
+
+<div *ngIf="selectedTask && (selectedTask.hours > 8 || selectedTask < 1)">
+  <p style="color: red;">Please select a task greater than 1 hour or less than 8 hours</p>
+</div>
+<p-messages [(value)]="msgs"></p-messages>

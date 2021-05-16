@@ -1,0 +1,27 @@
+<div style="border-style: double;">
+    <div>
+        <h3>Add task to staff members</h3>
+    </div>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <th *ngFor="let column of cols">
+                {{column.header}}
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of staff">
+                <td *ngFor="let column of cols">
+                    <div *ngIf="column.header != 'addTask'">
+                        {{row[column.field]}}
+                    </div>
+                    <div *ngIf="column.header == 'addTask'">
+                        <button type="button" (click)="addTask(row)" class="btn btn-secondary">Add Task</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <button style="float: right;" type="button" (click)="closeComponent()" class="btn btn-info">Close</button>
+    </div>
+</div>

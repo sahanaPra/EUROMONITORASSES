@@ -1,0 +1,7 @@
+{
+  "environment": {
+    "clients": {
+      "taskSchedulerUrl": "https://localhost:44371/"
+    }
+  }
+}
